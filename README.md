@@ -13,7 +13,7 @@ The dashboard updates dynamically based on slicer selection.
 This project demonstrates strong **Excel dashboard and data analysis skills**.
 
 ## 📸 Dashboard Screenshot
-![Coffee Shop Sales Dashboard](.png)
+![Coffee Shop Sales Dashboard](Coffe_Shop_Dashboard_1.png)
 
 📁 Tool Used: Microsoft Excel (Pivot Tables, Pivot Charts, Slicers)
 
