@@ -14,15 +14,27 @@ This project demonstrates strong skills in **Excel data analysis, dashboard deve
 📁 Tool Used: Microsoft Excel (Pivot Tables, Pivot Charts, Slicers)
 
 ## 📸 Dashboard Screenshot
-![Coffee Shop Sales Dashboard](Coffe_Shop_Dashboard_1.png)
+<details>
+   <summary> 📊 Overall Dashboard Analysis – A unified view of key sales metrics and trends across all store locations and time periods.
+</summary>
+  <p align="center">
+    <img src="Coffe_Shop_Dashboard_1.png" width ="950">
+  </p>
+</details>
+<details>
+  <summary>📍 Store Location Analysis – Comparison of total sales performance across all store branches.</summary>
 
-**📍 Store Location Analysis – Comparison of total sales performance across all store branches.**
+  <p align="center">
+    <img src="Coffe_Shop_Dashboard_2.png" width ="950">
+  </p>
+</details>
+<details>
+  <summary>🗓 Monthly Sales Analysis – Month-wise comparison of total sales across the year.</summary>
 
-![Coffee Shop Sales Dashboard](Coffe_Shop_Dashboard_2.png)
-
-**🗓 Monthly Sales Analysis – Month-wise comparison of total sales across the year.**
-
-![Coffee Shop Sales Dashboard](Coffe_Shop_Dashboard_3.png)
+  <p align="center">
+    <img src="Coffe_Shop_Dashboard_3.png" width ="950">
+  </p>
+</details>
 
 
 
