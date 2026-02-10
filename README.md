@@ -16,6 +16,15 @@ This project demonstrates strong skills in **Excel data analysis, dashboard deve
 ## 📸 Dashboard Screenshot
 ![Coffee Shop Sales Dashboard](Coffe_Shop_Dashboard_1.png)
 
+**📍 Store Location Analysis – Comparison of total sales performance across all store branches.**
+
+![Coffee Shop Sales Dashboard](Coffe_Shop_Dashboard_2.png)
+
+**🗓 Monthly Sales Analysis – Month-wise comparison of total sales across the year.**
+
+![Coffee Shop Sales Dashboard](Coffe_Shop_Dashboard_3.png)
+
+
 
 
 
