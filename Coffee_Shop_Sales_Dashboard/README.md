@@ -39,7 +39,7 @@ This project is highly aligned with *Data Analyst and Business Analyst portfolio
 
 These KPIs provide a *high-level snapshot of financial health and customer value efficiency*, supporting quick executive review.
 
-![KPI Section](Coffee_Shop_Sales_Dashboard_1.png)
+![KPI Section](Coffe_Shop_Dashboard_KPIs.png)
 
 </details>
 
@@ -57,7 +57,8 @@ These KPIs provide a *high-level snapshot of financial health and customer value
 </details>
 
 ---
-<summary><strong>📈 Monthly & Seasonal Trend Analysis</strong></summary>
+<details>
+<summary><strong>📈 Monthly & Seasonal Trend Analysis </strong></summary>
 
 - Month-over-month revenue comparison
 - Seasonal demand patterns
@@ -66,11 +67,7 @@ These KPIs provide a *high-level snapshot of financial health and customer value
 Supports *forecasting, budgeting, and performance monitoring*.
 
 ![Monthly Trends](Coffe_Shop_Dashboard_3.png)
-
 </details>
-
----
-
 
 
 ---
