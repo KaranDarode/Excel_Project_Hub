@@ -12,7 +12,7 @@ By leveraging **Pivot Tables, Pivot Charts, and Slicers**, the solution enables 
 
 ## 🖼️ Dashboard Preview  
 
-<img src="Sales_Performance_Dashboard.png" alt="City-Wise Sales Executive Analysis Dashboard" width="100%"/>
+<img src="Dashboard_1.png" alt="City-Wise Sales Executive Analysis Dashboard" width="100%"/>
 
 ---
 
@@ -27,8 +27,10 @@ By leveraging **Pivot Tables, Pivot Charts, and Slicers**, the solution enables 
 ---
 
 ## 📊 Pivot Table Data Overview  
-
-<img src="Pivot_Table_Data.png" alt="City-Wise Sales Executive Pivot Data" width="100%"/>
+<details>
+  <summary><strong>Show Image</strong></summary>
+  <img src="Pivote_3.png" alt="City-Wise Sales Executive Pivot Data" width="100%"/>
+</details>
 
 The Pivot Table structure summarizes:
 
@@ -45,11 +47,10 @@ It aggregates Day 1 to Day 5 sales data into a structured analytical model for d
 ## 🖥️ Dashboard Insights  
 
 The interactive dashboard visualizes:
-<details><strong>
-  <img src="Pivot_Table_Data.png" alt="City-Wise Sales Executive Pivot Data" width="100%"/>
-</strong></details>
-
-
+<details>
+  <summary><strong>Show Image</strong></summary>
+   <img src="Dashboard_2.png" alt="City-Wise Sales Executive Pivot Data" width="100%"/>
+</details>
 - City-wise sales comparison  
 - Executive-level daily sales tracking  
 - Top 5 Sales Executives  
