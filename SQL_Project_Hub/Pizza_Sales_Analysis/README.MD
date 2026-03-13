@@ -1,8 +1,8 @@
-# 🍕 Pizza Sales Analysis Project
+# 🍕 Pizza Sales SQL Analysis Project
 
 ## 📊 Project Overview
 
-This project presents an end‑to‑end *SQL data analysis of a Pizza Sales dataset. The goal is to transform raw transactional order data into **actionable business insights* using structured SQL queries.
+This project presents an end‑to‑end **SQL data analysis of a Pizza Sales dataset**. The goal is to transform raw transactional order data into **actionable business insights** using structured SQL queries.
 
 The analysis focuses on identifying:
 
@@ -11,22 +11,22 @@ The analysis focuses on identifying:
 * 🕒 Customer ordering patterns
 * 📈 Sales trends over time
 
-The SQL analysis is organized into *three progressive analytical levels* to demonstrate increasing query complexity:
+The SQL analysis is organized into **three progressive analytical levels** to demonstrate increasing query complexity:
 
 * 🟢 Basic Analysis
 * 🟡 Intermediate Analysis
 * 🔴 Advanced Analysis
 
-These queries can be executed in *MySQL or PostgreSQL environments* and can support further integration with *BI tools such as Power BI, Excel, or Tableau*.
+These queries can be executed in **MySQL or PostgreSQL environments** and can support further integration with **BI tools such as Power BI, Excel, or Tableau**.
 
 ---
 
 # 🗄️ Database Setup
 
-sql
+```sql
 CREATE DATABASE IF NOT EXISTS PIZZAS;
 USE PIZZAS;
-
+```
 
 ---
 
@@ -49,7 +49,7 @@ USE PIZZAS;
 | pizzas        | order_details | pizza_id      |
 | pizza_types   | pizzas        | pizza_type_id |
 
-These relationships allow the dataset to connect *orders, pizza types, and pricing data* for comprehensive analysis.
+These relationships allow the dataset to connect **orders, pizza types, and pricing data** for comprehensive analysis.
 
 ---
 
@@ -57,10 +57,10 @@ These relationships allow the dataset to connect *orders, pizza types, and prici
 
 ## 1️⃣ Total Number of Orders
 
-sql
+```sql
 SELECT DISTINCT COUNT(order_id) AS total_orders
 FROM orders;
-
+```
 
 | Metric       | Description                          |
 | ------------ | ------------------------------------ |
@@ -70,11 +70,11 @@ FROM orders;
 
 ## 2️⃣ Total Revenue Generated
 
-sql
+```sql
 SELECT CONCAT("$ ", ROUND(SUM(od.quantity * p.price),2)) AS total_revenue
 FROM order_details od
 JOIN pizzas p ON od.pizza_id = p.pizza_id;
-
+```
 
 | Metric  | Formula          |
 | ------- | ---------------- |
@@ -84,42 +84,42 @@ JOIN pizzas p ON od.pizza_id = p.pizza_id;
 
 ## 3️⃣ Highest Priced Pizza
 
-sql
+```sql
 SELECT p.price, pt.name
 FROM pizzas p
 JOIN pizza_types pt ON p.pizza_type_id = pt.pizza_type_id
 ORDER BY p.price DESC
 LIMIT 1;
+```
 
-
-This query identifies the *most expensive pizza available on the menu*.
+This query identifies the **most expensive pizza available on the menu**.
 
 ---
 
 ## 4️⃣ Most Common Pizza Size Ordered
 
-sql
+```sql
 SELECT p.size, SUM(od.quantity) AS total_orders
 FROM order_details od
 JOIN pizzas p ON p.pizza_id = od.pizza_id
 GROUP BY p.size
 ORDER BY total_orders DESC;
+```
 
-
-This analysis highlights *which pizza size customers order the most*.
+This analysis highlights **which pizza size customers order the most**.
 
 ---
 
 ## 5️⃣ Top 5 Most Ordered Pizza Types
 
-sql
+```sql
 SELECT p.pizza_type_id, SUM(o.quantity) AS total_quantities
 FROM order_details o
 JOIN pizzas p ON p.pizza_id = o.pizza_id
 GROUP BY p.pizza_type_id
 ORDER BY total_quantities DESC
 LIMIT 5;
-
+```
 
 | Rank | Description                                   |
 | ---- | --------------------------------------------- |
@@ -131,26 +131,26 @@ LIMIT 5;
 
 ## 6️⃣ Total Quantity Ordered by Pizza Category
 
-sql
+```sql
 SELECT SUM(od.quantity) AS total_quantities, pt.category
 FROM order_details od
 JOIN pizzas p ON p.pizza_id = od.pizza_id
 JOIN pizza_types pt ON p.pizza_type_id = pt.pizza_type_id
 GROUP BY pt.category;
+```
 
-
-This query evaluates *which pizza categories generate the highest demand*.
+This query evaluates **which pizza categories generate the highest demand**.
 
 ---
 
 ## 7️⃣ Distribution of Orders by Hour
 
-sql
+```sql
 SELECT HOUR(time) AS hours, COUNT(order_id) AS total_orders
 FROM orders
 GROUP BY hours
 ORDER BY total_orders DESC;
-
+```
 
 | Insight   | Description                               |
 | --------- | ----------------------------------------- |
@@ -160,20 +160,20 @@ ORDER BY total_orders DESC;
 
 ## 8️⃣ Category‑wise Pizza Distribution
 
-sql
+```sql
 SELECT pt.category, COUNT(p.pizza_id) AS no_pizzas
 FROM pizza_types pt
 JOIN pizzas p ON p.pizza_type_id = pt.pizza_type_id
 GROUP BY pt.category;
+```
 
-
-This query shows *how many pizzas exist in each category*.
+This query shows **how many pizzas exist in each category**.
 
 ---
 
 ## 9️⃣ Average Number of Pizzas Ordered Per Day
 
-sql
+```sql
 WITH avg_pizzas_ordered AS (
 SELECT o.date, SUM(od.quantity) AS sum_pizzas
 FROM order_details od
@@ -182,15 +182,15 @@ GROUP BY o.date
 )
 SELECT AVG(sum_pizzas) AS avg_per_day
 FROM avg_pizzas_ordered;
+```
 
-
-This helps measure *average daily demand*.
+This helps measure **average daily demand**.
 
 ---
 
 ## 🔟 Top 3 Pizza Types by Revenue
 
-sql
+```sql
 SELECT pt.name, SUM(p.price * od.quantity) AS most_revenue
 FROM pizzas p
 JOIN order_details od ON od.pizza_id = p.pizza_id
@@ -198,9 +198,9 @@ JOIN pizza_types pt ON pt.pizza_type_id = p.pizza_type_id
 GROUP BY pt.name
 ORDER BY most_revenue DESC
 LIMIT 3;
+```
 
-
-This identifies the *most profitable pizzas*.
+This identifies the **most profitable pizzas**.
 
 ---
 
@@ -208,7 +208,7 @@ This identifies the *most profitable pizzas*.
 
 ## 1️⃣1️⃣ Revenue Contribution Percentage
 
-sql
+```sql
 SELECT
 pt.name,
 SUM(p.price * od.quantity) *100 / SUM(SUM(p.price * od.quantity)) OVER() AS revenue_percentage
@@ -217,15 +217,15 @@ JOIN order_details od ON od.pizza_id = p.pizza_id
 JOIN pizza_types pt ON pt.pizza_type_id = p.pizza_type_id
 GROUP BY pt.name
 ORDER BY revenue_percentage DESC;
+```
 
-
-This determines *how much each pizza contributes to total revenue*.
+This determines **how much each pizza contributes to total revenue**.
 
 ---
 
 ## 1️⃣2️⃣ Cumulative Revenue Over Time
 
-sql
+```sql
 SELECT ord.date,
 SUM(p.price * od.quantity) AS daily_revenue,
 SUM(SUM(p.price * od.quantity)) OVER (ORDER BY ord.date) AS cumulative_revenue
@@ -234,15 +234,15 @@ JOIN order_details od ON p.pizza_id = od.pizza_id
 JOIN orders ord ON od.order_id = ord.order_id
 GROUP BY ord.date
 ORDER BY ord.date;
+```
 
-
-This analysis tracks *revenue growth trends over time*.
+This analysis tracks **revenue growth trends over time**.
 
 ---
 
 ## 1️⃣3️⃣ Top 3 Pizzas per Category by Revenue
 
-sql
+```sql
 SELECT name, category, revenue
 FROM (
 SELECT
@@ -260,15 +260,15 @@ GROUP BY pt.name, pt.category
 ) t
 WHERE rn <= 3
 ORDER BY category, revenue DESC;
+```
 
-
-This highlights *top‑performing pizzas within each category*.
+This highlights **top‑performing pizzas within each category**.
 
 ---
 
 ## 1️⃣4️⃣ Top 5 Days with Highest Revenue
 
-sql
+```sql
 SELECT o.date, ROUND(SUM(p.price * od.quantity),2) AS revenue
 FROM orders o
 JOIN order_details od ON od.order_id = o.order_id
@@ -276,27 +276,27 @@ JOIN pizzas p ON od.pizza_id = p.pizza_id
 GROUP BY date
 ORDER BY revenue DESC
 LIMIT 5;
-
+```
 
 ---
 
 ## 1️⃣5️⃣ Busiest Day of the Week
 
-sql
+```sql
 SELECT DAYNAME(date) AS days,
 COUNT(order_id) AS total_orders
 FROM orders
 GROUP BY days
 ORDER BY total_orders DESC;
+```
 
-
-This query identifies *which day generates the most orders*.
+This query identifies **which day generates the most orders**.
 
 ---
 
 ## 1️⃣6️⃣ Rank Pizzas by Quantity Sold
 
-sql
+```sql
 SELECT pt.name,
 SUM(od.quantity) AS quantity_sold,
 RANK() OVER(
@@ -306,13 +306,13 @@ FROM pizzas p
 JOIN order_details od ON od.pizza_id = p.pizza_id
 JOIN pizza_types pt ON pt.pizza_type_id = p.pizza_type_id
 GROUP BY pt.name;
-
+```
 
 ---
 
 ## 1️⃣7️⃣ Revenue Growth Compared to Previous Day
 
-sql
+```sql
 SELECT o.date,
 ROUND(SUM(p.price * od.quantity),2) AS revenue,
 LAG(ROUND(SUM(p.price * od.quantity),2)) OVER(
@@ -322,15 +322,15 @@ FROM orders o
 JOIN order_details od ON od.order_id = o.order_id
 JOIN pizzas p ON od.pizza_id = p.pizza_id
 GROUP BY o.date;
+```
 
-
-This measures *day‑to‑day revenue change*.
+This measures **day‑to‑day revenue change**.
 
 ---
 
 # 📊 Visualization Suggestions
 
-The following dashboards can be created using *Power BI, Excel, or Tableau*:
+The following dashboards can be created using **Power BI, Excel, or Tableau**:
 
 | Analysis              | Visualization        |
 | --------------------- | -------------------- |
@@ -344,7 +344,7 @@ The following dashboards can be created using *Power BI, Excel, or Tableau*:
 
 # 🏗 Project Structure
 
-
+```
 pizza-sales-analysis
 
 ├── dataset
@@ -362,17 +362,17 @@ pizza-sales-analysis
 
 
 └── README.md
-
+```
 
 ---
 
 # 🔌 Database Connection Example
 
-
+```
 Host: localhost
 Port: 3306
 Database: pizzas
-
+```
 
 ---
 
